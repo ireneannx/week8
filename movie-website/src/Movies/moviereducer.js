@@ -11,6 +11,8 @@ export default function (state = initialState, action) {
       return { ...state, movies: action.payload }
     case "GET_ONE_MOVIE":
       return { ...state, movie_details: action.payload }
+    case "CLEAR_DATA":
+      return { ...state, movie_details: {} }
     default:
       return { ...state }
   }

@@ -20,7 +20,7 @@ class ShowMovie extends Component {
       <div>
         {/* have to show both because sometimes movie details will load but not the images. SO YA THERE WILL BE AN EMPTY THING THERE BECAUSE IT HASNT LOADED */}
         {(this.props.movie_details && this.props.movie_details.images) ?
-          <div>
+          <MainFrame>
             <Picture src={this.props.movie_details.images.fanart} />
             <Frame>
               <h3>{this.props.movie_details.title}</h3>
@@ -28,7 +28,7 @@ class ShowMovie extends Component {
               <p>{this.props.movie_details.synopsis}</p>
               <a href={this.props.movie_details.trailer}>Watch Trailer</a>
             </Frame>
-          </div>
+          </MainFrame>
           : null}
 
         {/* i am reusing styled picture component from earlier */}
@@ -48,7 +48,9 @@ const mapDispatchToProps = dispatch => bindActionCreators({ getMovie }, dispatch
 export default connect(mapStateToProps, mapDispatchToProps)(ShowMovie);
 
 //styled components
-export const Frame = styled.img`
+export const Frame = styled.div`
+border: 2px solid red;
+`
+export const MainFrame = styled.div`
 display: flex;
-
 `

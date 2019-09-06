@@ -19,3 +19,9 @@ export const getMovie = (movieid) => {
     })
   }
 }
+
+export const clearMovieData = () => {
+  return ({
+    type: "CLEAR_DATA"
+  })
+}

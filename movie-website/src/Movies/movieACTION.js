@@ -9,3 +9,13 @@ export const getMovies = () => {
     })
   }
 }
+
+export const getMovie = (movieid) => {
+  return async function (dispatch) {
+    const res = await axios.get(`https://tv-v2.api-fetch.website/movie/${movieid}`)
+    return dispatch({
+      type: "GET_ONE_MOVIE",
+      payload: res.data
+    })
+  }
+}

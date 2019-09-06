@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getMovies } from './movieACTION';
-import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 
 class Movies extends Component {
@@ -20,10 +22,10 @@ class Movies extends Component {
 
     return (
       <div>
+        <h1>Movies</h1>
         {movies.map((movie) => {
-          return (<div>
-            <img src={movie.images.poster}></img>
-          </div>)
+          return (
+            <Link to={movie._id}><Picture src={movie.images.poster}></Picture></Link>)
         })}
       </div>
     );
@@ -38,4 +40,12 @@ const mapStateToProps = state => ({
 //mapDispatchToProps
 const mapDispatchToProps = dispatch => bindActionCreators({ getMovies }, dispatch)
 
+// styled components part . If you wanna create a styled component of paragraph, write styled.p. Note that youre syling the components. So even the components that I made will have that. For example, if i made a particular component for a particular type of image called "<img2/>", then use styled.img2. 
+export const Picture = styled.img`
+padding: 0.25em 1em;
+width: 300px;
+`
+// 
+
 export default connect(mapStateToProps, mapDispatchToProps)(Movies);
+

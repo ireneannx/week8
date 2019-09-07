@@ -29,7 +29,7 @@ class ShowMovie extends Component {
               <a href={this.props.movie_details.trailer}>Watch Trailer</a>
             </Frame>
           </MainFrame>
-          : null}
+          : <p>Loading...</p>}
 
         {/* i am reusing styled picture component from earlier */}
       </div>

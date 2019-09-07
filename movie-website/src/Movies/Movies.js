@@ -10,7 +10,7 @@ class Movies extends Component {
 
   //call the action in componentDidMount which will get the movie from the axios call 
   componentDidMount() {
-    this.props.getMovies()
+    const m = (!this.props.isLoaded) ? this.props.getMovies() : null
   }
 
   //to fix bug where previous movie details get shown on slow data when you click on a movie
@@ -28,10 +28,13 @@ class Movies extends Component {
     return (
       <div>
         <h1>Movies</h1>
-        {movies.map((movie) => {
-          return (
-            <Link to={movie._id}><Picture src={movie.images.poster}></Picture></Link>)
-        })}
+        {
+          movies.map((movie) => {
+            return (
+              <Link to={movie._id}><Picture src={movie.images.poster}></Picture></Link>)
+          })}
+
+
       </div>
     );
   }
@@ -39,7 +42,8 @@ class Movies extends Component {
 
 //mapStateToProps
 const mapStateToProps = state => ({
-  movies: state.moviereducer.movies
+  movies: state.moviereducer.movies,
+  isLoaded: state.moviereducer.isLoaded
 })
 
 //mapDispatchToProps

@@ -2,13 +2,14 @@
 
 const initialState = {
   movies: [],
-  movie_details: {}
+  movie_details: {},
+  isLoaded: false //to show if Movies component has already been loaded once. If so, there is no need to make axios call by calling GET_MOVIE action again and again.
 }
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case "GET_MOVIES":
-      return { ...state, movies: action.payload }
+      return { ...state, movies: action.payload, isLoaded: true } //this is where youre changing the state
     case "GET_ONE_MOVIE":
       return { ...state, movie_details: action.payload }
     case "CLEAR_DATA":
@@ -18,3 +19,4 @@ export default function (state = initialState, action) {
   }
 }
 
+//reducers take an action and change the state based on the action

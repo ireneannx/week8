@@ -10,6 +10,10 @@ class Movies extends Component {
 
   //call the action in componentDidMount which will get the movie from the axios call 
   componentDidMount() {
+    let current_time = new Date();
+    console.log("diff", (current_time - this.props.time) / 60000);
+    const p = ((current_time - this.props.time) / 60000 >= 1) ? this.props.getMovies() : null //after one min has passed, it will still call getMovies() in case of updates 
+
     const m = (!this.props.isLoaded) ? this.props.getMovies() : null
   }
 
@@ -43,7 +47,8 @@ class Movies extends Component {
 //mapStateToProps
 const mapStateToProps = state => ({
   movies: state.moviereducer.movies,
-  isLoaded: state.moviereducer.isLoaded
+  isLoaded: state.moviereducer.isLoaded,
+  time: state.moviereducer.time
 })
 
 //mapDispatchToProps

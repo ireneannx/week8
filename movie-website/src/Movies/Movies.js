@@ -17,11 +17,12 @@ class Movies extends Component {
     const m = (!this.props.isLoaded) ? this.props.getMovies() : null
   }
 
+
+
   //to fix bug where previous movie details get shown on slow data when you click on a movie
   componentWillUnmount() {
     this.props.clearMovieData()
   }
-
 
   render() {
     let { movies } = this.props;

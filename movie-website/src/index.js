@@ -9,13 +9,16 @@ import rootReducer from './rootReducer'
 import logger from 'redux-logger'
 //store part 
 import { createStore, applyMiddleware } from 'redux';
+import { save, load } from "redux-localstorage-simple"
 import { composeWithDevTools } from 'redux-devtools-extension';
 import ReduxThunk from 'redux-thunk'
-const middleware = [ReduxThunk, logger]
+const middleware = [ReduxThunk, logger, save()]
+//for local storage
+
 
 const store = createStore(
   rootReducer,
-  {}, //initial state
+  load(),
   composeWithDevTools(applyMiddleware(...middleware))
 )
 

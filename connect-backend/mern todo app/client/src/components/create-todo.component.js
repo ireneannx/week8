@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class CreateTodo extends Component {
   state = {
@@ -18,6 +19,17 @@ class CreateTodo extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
+    const newTodo = {
+      todo_description: this.state.todo_description,
+      todo_responsible: this.state.todo_responsible,
+      todo_priority: this.state.todo_priority,
+      todo_completed: this.state.todo_completed
+    }
+
+    //axios call to the backend
+    axios.post('http://localhost:4000/todos', newTodo)
+      .then(res => console.log(res.data))
+
     this.setState({
       todo_description: '',
       todo_responsible: '',
@@ -34,7 +46,7 @@ class CreateTodo extends Component {
           <label>Description: </label>
           <input type="text"
             className="form-control"
-            value={this.state.todo_description}
+            // value={this.state.todo_description}
             name="todo_description"
             onChange={this.onChange}
           />
@@ -44,7 +56,7 @@ class CreateTodo extends Component {
           <input
             type="text"
             className="form-control"
-            value={this.state.todo_responsible}
+            // value={this.state.todo_responsible}
             name="todo_responsible"
             onChange={this.onChange}
           />

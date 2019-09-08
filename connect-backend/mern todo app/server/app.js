@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
 var methodOverride = require('method-override')
 
 var indexRouter = require('./routes/index');
@@ -18,6 +19,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//cors 
+app.use(cors())
 
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'))

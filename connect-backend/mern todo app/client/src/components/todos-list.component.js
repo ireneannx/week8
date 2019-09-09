@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 //each row is given by the OneTodo component
 const OneTodo = (props) => {
-  console.log("One todo props", props)
+
+  console.log("One todo props", props);
+
   return (
     <tr>
       <td>{props.todo.todo_description}</td>
       <td>{props.todo.todo_responsible}</td>
       <td>{props.todo.todo_priority}</td>
       <td>
-        <button>Edit</button>
+        <Link to={"/edit/" + props.todo._id}>Edit</Link>
       </td>
     </tr>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeConsumer } from '../theme/theme'
+import Switch from '../theme/Switch'
 
 const Navbar = () => {
   return (
@@ -21,6 +22,10 @@ const Navbar = () => {
                 <li className="navbar-item">
                   <Link to="/create" className="nav-link">Create Todo</Link>
                 </li>
+              </ul>
+              <ul className="ml-auto">
+                <Switch />
+
               </ul>
             </div>
           </nav>

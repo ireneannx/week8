@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { ThemeConsumer } from '../theme/theme'
 
 //each row is given by the OneTodo component
 const OneTodo = (props) => {
@@ -43,26 +44,34 @@ class TodosList extends Component {
 
   render() {
     var i = 1;
-    return (<div>
+    return (<ThemeConsumer>
 
-      <p>Todo List</p>
+      {({ theme }) => {
+        var themestyle = theme == "light" ? null : "table-dark"
 
-      <table className="table table-striped" style={{ marginTop: 20 }} >
-        <thead>
-          <tr>
-            <th>Description</th>
-            <th>Responsible</th>
-            <th>Priority</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.state.todos.map((data) => {
-            return (<OneTodo todo={data} key={i++} />)
-          })}
-        </tbody>
-      </table>
-    </div>);
+        return (
+          <>
+            <table className={`table table-striped ${themestyle}`} style={{ marginTop: 20 }} >
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Responsible</th>
+                  <th>Priority</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.todos.map((data) => {
+                  return (<OneTodo todo={data} key={i++} />)
+                })}
+              </tbody>
+            </table>
+          </>
+        )
+      }}
+
+
+    </ThemeConsumer>);
   }
 }
 

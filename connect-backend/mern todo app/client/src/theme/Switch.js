@@ -1,12 +1,18 @@
-// import React from 'react';
-// import { IoMdMoon as Moon, IoMdSunny as Sun } from 'react-icons/io';
+import React from 'react';
+import { IoMdMoon as Moon, IoMdSunny as Sun } from 'react-icons/io';
+import { ThemeConsumer } from './theme'
 
-// export default function Switch() {
+export default function Switch() {
 
-//   return (
-//     <button className='Switch'>
-//       <Sun className='icon' />
-//       <Moon className='icon' />
-//     </button>
-//   );
-// }
+  return (
+    <ThemeConsumer>
+      {({ changeTheme }) => {
+        return (<button className='Switch' onClick={changeTheme}>
+          <Sun className='icon' />
+          <Moon className='icon' />
+        </button>)
+      }}
+
+    </ThemeConsumer>
+  );
+}

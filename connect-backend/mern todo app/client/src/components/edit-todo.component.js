@@ -41,13 +41,6 @@ class EditTodo extends Component {
       .catch((err) => console.log(err))
   }
 
-
-
-  // componentDidMount() {
-  //   //axios call to update 
-
-
-  // }
   render() {
     return (
       <div>
